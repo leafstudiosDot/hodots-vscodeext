@@ -24,11 +24,33 @@ function activate(context) {
 		vscode.window.showInformationMessage('Hello World from hodots. for VSCode!');
 	});
 
+	let createTabBrowser = vscode.commands.registerCommand('hodotsWeb.WebTab', function () {
+		const panel = vscode.window.createWebviewPanel(
+			'hodotsWeb',
+			"hodots.com",
+			vscode.ViewColumn.One,
+			{
+				enableScripts: true
+			}
+		);
+
+		function hodotsWebTabCon(uri) {
+			return `
+			<iframe src="${uri}" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;">
+    			An error has occurred.
+			</iframe>
+			`
+		}
+
+		panel.webview.html = hodotsWebTabCon("https://hodots.com/")
+	})
+
 	context.subscriptions.push(disposable);
+	context.subscriptions.push(createTabBrowser);
 }
 
 // this method is called when your extension is deactivated
-function deactivate() {}
+function deactivate() { }
 
 module.exports = {
 	activate,

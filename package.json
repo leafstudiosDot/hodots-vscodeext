@@ -10,7 +10,8 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:hodotsVSCodeExt.helloWorld"
+		"onCommand:hodotsVSCodeExt.helloWorld",
+		"onCommand:hodotsWeb.WebTab"
 	],
 	"main": "./extension.js",
 	"contributes": {
@@ -43,6 +44,10 @@
 			{
 				"command": "hodots.switchenv",
 				"title": "Switch Environment"
+			},
+			{
+				"command": "hodotsWeb.WebTab",
+				"title": "Open hodots.com Tab"
 			}
 		]
 	},
